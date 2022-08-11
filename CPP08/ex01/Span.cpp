@@ -46,15 +46,6 @@ void    Span::addNumber(int n) {
 	std::set<int>::iterator setEndIter = _spanSet.end();
 
 
-// debug
-//	std::cout << "************"  << std::endl;
-//	std::cout << "n:           " << n << std::endl;
-//	std::cout << "begin:       " << *setBeginIter << std::endl;
-//	std::cout << "upper bound: " << *setUpperNeighborIter << std::endl;
-//	std::cout << "lower bound: " << *setLowerNeighborIter << std::endl;
-//	std::cout << "end:         " << *setEndIter << std::endl;
-//	std::cout << "************"  << std::endl;
-
 	// Initialize exception
 	if (_spanSet.size() == 1)
 		return ;
@@ -77,20 +68,8 @@ void    Span::addNumber(int n) {
 		_shortestSpan = span;
 }
 
-unsigned int Span::shortestSpan() const throw(std::exception) {
-	if (_spanSet.size() < 2)
-		throw std::out_of_range("Too few elements");
-	return _shortestSpan;
-}
-
-unsigned int Span::longestSpan() const throw(std::exception) {
-	if (_spanSet.size() < 2)
-		throw std::out_of_range("Too few elements");
-	return *_spanSet.rbegin() - *_spanSet.begin();
-}
-
 void    Span::addNumber(std::set<int>::const_iterator beginSet,
-                       std::set<int>::const_iterator endSet) {
+                        std::set<int>::const_iterator endSet) {
 	_shortestSpan = 1;
 	while (*beginSet < *endSet)
 	{
@@ -102,7 +81,7 @@ void    Span::addNumber(std::set<int>::const_iterator beginSet,
 }
 
 void    Span::addNumber(std::vector<int>::const_iterator beginVec,
-                       std::vector<int>::const_iterator endVec) {
+                        std::vector<int>::const_iterator endVec) {
 	_shortestSpan = 1;
 	while (beginVec < endVec)
 	{
@@ -111,6 +90,18 @@ void    Span::addNumber(std::vector<int>::const_iterator beginVec,
 		_spanSet.insert(*beginVec);
 		beginVec++;
 	}
+}
+
+unsigned int Span::shortestSpan() const throw(std::exception) {
+	if (_spanSet.size() < 2)
+		throw std::out_of_range("Too few elements");
+	return _shortestSpan;
+}
+
+unsigned int Span::longestSpan() const throw(std::exception) {
+	if (_spanSet.size() < 2)
+		throw std::out_of_range("Too few elements");
+	return *_spanSet.rbegin() - *_spanSet.begin();
 }
 
 void    Span::setPrint() {
