@@ -89,6 +89,30 @@ unsigned int Span::longestSpan() const throw(std::exception) {
 	return *_spanSet.rbegin() - *_spanSet.begin();
 }
 
+void    Span::addNumber(std::set<int>::const_iterator beginSet,
+                       std::set<int>::const_iterator endSet) {
+	_shortestSpan = 1;
+	while (*beginSet < *endSet)
+	{
+		if (_spanSet.size() == _sizeMax)
+			throw std::out_of_range("Span is full");
+		_spanSet.insert(*beginSet);
+		beginSet++;
+	}
+}
+
+void    Span::addNumber(std::vector<int>::const_iterator beginVec,
+                       std::vector<int>::const_iterator endVec) {
+	_shortestSpan = 1;
+	while (beginVec < endVec)
+	{
+		if (_spanSet.size() == _sizeMax)
+			throw std::out_of_range("Span is full");
+		_spanSet.insert(*beginVec);
+		beginVec++;
+	}
+}
+
 void    Span::setPrint() {
 	std::cout << "setPrint+++" << std::endl;
 	for (std::set<int>::iterator i = _spanSet.begin(); i != _spanSet.end(); ++i)

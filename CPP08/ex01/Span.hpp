@@ -8,7 +8,7 @@
 #include <climits>
 
 #include <iostream>
-//#include <vector>
+#include <vector>
 #include <set>
 
 class Span {
@@ -20,6 +20,8 @@ public:
 	~Span();
 
 	void    addNumber(int n);
+	void    addNumber(std::set<int>::const_iterator beginSet, std::set<int>::const_iterator endSet);
+	void    addNumber(std::vector<int>::const_iterator beginVec, std::vector<int>::const_iterator endVec);
 	unsigned int     shortestSpan() const throw(std::exception);
 	unsigned int     longestSpan() const throw(std::exception);
 

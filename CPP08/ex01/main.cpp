@@ -116,6 +116,74 @@ int	main() {
 			std::cerr << e.what() << std::endl;
 		}
 	}
+	{
+		std::cout << "[TEST]: addNumber using range of iterators" << std::endl;
+		try
+		{
+			Span sp = Span(10000);
+			std::vector<int> vector;
+
+			vector.reserve(10000);
+			for (int i = 0; i < 10000; ++i)
+				vector.push_back(i);
+
+			sp.addNumber(vector.begin(), vector.end());
+
+//			sp.setPrint();
+			std::cout << sp.shortestSpan() << std::endl;
+			std::cout << sp.longestSpan() << std::endl;
+		}
+		catch (std::exception &e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+	}
+	{
+		std::cout << "[TEST]: addNumber using range of iterators: Span is full error" << std::endl;
+		try
+		{
+			Span sp = Span(10);
+			std::vector<int> vector;
+
+			vector.reserve(12);
+			for (int i = 0; i < 12; ++i)
+				vector.push_back(i);
+
+			sp.addNumber(vector.begin(), vector.end());
+
+//			sp.setPrint();
+			std::cout << sp.shortestSpan() << std::endl;
+			std::cout << sp.longestSpan() << std::endl;
+		}
+		catch (std::exception &e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+	}
+	{
+		std::cout << "[TEST]: addNumber using range of iterators: Span is few"
+		          << std::endl;
+		try
+		{
+			Span sp = Span(10);
+			std::vector<int> vector;
+
+			vector.reserve(5);
+			for (int i = 0; i < 5; ++i)
+				vector.push_back(i);
+
+			sp.addNumber(vector.begin(), vector.end());
+
+//			sp.setPrint();
+			std::cout << sp.shortestSpan() << std::endl;
+			std::cout << sp.longestSpan() << std::endl;
+		}
+		catch (std::exception &e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+	}
+
 
 	return 0;
 }
