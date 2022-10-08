@@ -9,18 +9,22 @@
 #include <algorithm>
 
 template<typename T>
-typename T::iterator easyfind(T &intContainer, const int target) {
+typename T::iterator easyfind(T &t, const int target) {
   typename T::iterator iter;
 
-  iter = std::find(intContainer.begin(), intContainer.end(), target);
+  iter = std::find(t.begin(), t.end(), target);
+  if (iter == t.end())
+    throw std::runtime_error("not found");
   return iter;
 }
 
 template<typename T>
-typename T::const_iterator easyfind(const T &intContainer, const int target) {
+typename T::const_iterator easyfind(const T &t, const int target) {
   typename T::const_iterator iter;
 
-  iter = std::find(intContainer.begin(), intContainer.end(), target);
+  iter = std::find(t.begin(), t.end(), target);
+  if (iter == t.end())
+    throw std::runtime_error("not found");
   return iter;
 }
 
