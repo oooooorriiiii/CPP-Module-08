@@ -10,10 +10,10 @@
 
 template<typename T>
 typename T::iterator easyfind(T &intContainer, const int target) {
-	typename T::iterator iter;
+  typename T::iterator iter;
 
-	iter = std::find(intContainer.begin(), intContainer.end(), target);
-	return iter;
+  iter = std::find(intContainer.begin(), intContainer.end(), target);
+  return iter;
 }
 
 template<typename T>
