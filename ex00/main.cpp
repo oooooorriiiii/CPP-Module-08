@@ -8,8 +8,16 @@
 
 #include "easyfind.hpp"
 
+void  testHeader(std::string str) {
+  std::cout << "TEST******************" << std::endl;
+  std::cout << str << std::endl;
+  std::cout << "**********************" << std::endl;
+}
+
 int main() {
   {
+    testHeader("std::list<int>");
+
     std::list<int> list;
     for (int i = 0; i < 10; ++i)
       list.push_back(i);
@@ -21,6 +29,9 @@ int main() {
     catch (std::exception &e) {
       std::cerr << e.what() << std::endl;
     }
+  }
+  {
+    testHeader("std::vector<int>");
 
     std::vector<int> vec;
 
