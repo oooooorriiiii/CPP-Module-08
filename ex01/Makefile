@@ -1,16 +1,16 @@
 CXX			:=	c++
 CXXFLAGS	:=	-Wall -Werror -Wextra -std=c++98
 
-NAME	:=	ex01_out
+NAME	:=	ex01.out
 
 SRCS	:=	main.cpp \
 			Span.cpp
 
-OBJS	:=	$(SRCS:.cpp=.o)
+OBJS	:=	$(SRCS:%.cpp=%.o)
 
 .PHONY:	all clean fclean re
 
-.o: .cpp
+%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
