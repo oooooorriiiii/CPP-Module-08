@@ -13,26 +13,31 @@
 
 class Span {
  public:
-  Span();
-  Span(const unsigned int n);
+  Span(const unsigned int n = 0);
   Span(const Span &span);
-  Span &operator=(const Span &span);
+  Span &operator=(const Span &rhs);
   ~Span();
 
   void addNumber(int n);
-  void addNumber(std::set<int>::const_iterator beginSet,
-                 std::set<int>::const_iterator endSet);
-  void addNumber(std::vector<int>::const_iterator beginVec,
-                 std::vector<int>::const_iterator endVec);
-  unsigned int shortestSpan() const throw(std::exception);
-  unsigned int longestSpan() const throw(std::exception);
+  template<class T>
+  void addNumber(T begin, T end) {
+    while (begin != end) {
+      if (elemVec_.size() == _sizeMax)
+        throw std::out_of_range("Span is full");
+      elemVec_.push_back(*begin);
+      begin++;
+    }
+  }
+  unsigned int shortestSpan() const;
+  unsigned int longestSpan() const;
 
   void setPrint();
 
+  const std::vector<int>& getElemVec() const;
+
  private:
-  std::set<int> _spanSet;
+  std::vector<int> elemVec_;
   unsigned int _sizeMax;
-  unsigned int _shortestSpan;
 };
 
 #endif //EX01_SPAN_HPP
